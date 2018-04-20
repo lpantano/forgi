@@ -27,7 +27,7 @@ try: #If we are in a git-repo, get git-describe version.
             # Apped the version number to init.py
             with open(outfile, "a") as of:
                 of.write('\n__complete_version__ = "{}"'.format(forgi_version))
-except OSError as e: #Outside of a git repo, do nothing.
+except subprocess.CalledProcessError: #Outside of a git repo, do nothing.
     build_py = _build_py
 
 
